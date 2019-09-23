@@ -1,11 +1,19 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head"></head>
-<body>
-<a href="/category/add">Add Category</a>
-<ul th:for="category : ${categories}">
-    <li th:text="${category}"></li>
-</ul>
 
+<body class="container">
+
+<h1 th:text="${title}">Default Title</h1>
+
+<nav th:replace="fragments :: navigation"></nav>
+<a href="/category/add">Add Category</a>
+
+<p th:unless="${Category} and ${Category.size()}">no cheese :(</p>
+<div th:each="category : ${Category}">
+<ul>
+    <li th:text="${category.name}"></li>
+</ul>
+</div>
 </body>
 </html>
